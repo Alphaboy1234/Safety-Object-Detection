@@ -1,0 +1,45 @@
+!pip install ultralytics
+
+installs the Ultralytics Python package, which provides:
+
+YOLO models (YOLOv8, YOLOv9, YOLOv10)
+
+Tools for object detection, segmentation, classification, and tracking
+
+Easy-to-use APIs for training and inference
+
+CODE BREAKDOWN:
+
+pip:
+
+Python’s package manager
+
+Used to install, update, and manage libraries
+
+install:
+
+Tells pip to download and install a package
+
+ultralytics:
+
+The library name
+
+Maintained by Ultralytics
+
+Contains YOLO implementations and pretrained weights
+
+What Gets Installed?
+
+When you run this command, it installs:
+
+ultralytics (main YOLO library)
+
+Dependencies such as:
+
+torch (PyTorch)
+
+opencv-python
+
+numpy
+
+matplotlib
