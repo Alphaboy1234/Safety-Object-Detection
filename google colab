@@ -1,2 +1,5 @@
 from google.colab import drive
 drive.mount('/content/drive')
+
+How to Use GOOGLE COLAB | Google Colab Tutorials for Beginners 
+https://youtu.be/TqqkZLHoY0o?si=dDyYVjn_YBb-NFE2
