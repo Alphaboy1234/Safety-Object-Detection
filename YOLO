@@ -1,2 +1,9 @@
 from ultralytics import YOLO
 print("YOLO imported successfully")
+
+
+YOLOv11 Object Detection on Custom Dataset | Step-by-Step Guide
+https://youtu.be/A1V8yYlGEkI?si=eeP13TsbXmyrmZcb
+
+THIS FILE CONTENTS:
+A comprehensive YOLOv11 custom object detection tutorial with a step-by-step guide for a two-class custom dataset. I cover setting up an environment for YOLOv11, how to annotate custom datasets in YOLO format, and how to train custom object detection models. Although I show a demonstration using YOLOv11 medium version, the method is generic enough to train all variations of YOLOv11 custom object detectors. This tutorial is for both Windows and Linux.
