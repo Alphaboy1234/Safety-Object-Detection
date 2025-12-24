@@ -1,0 +1,16 @@
+from ultralytics import YOLO
+from IPython.display import display
+from PIL import Image
+import os
+
+model = YOLO("yolov10n.pt")
+
+image_folder = "/content/drive/MyDrive/images"
+
+print("Files:", os.listdir(image_folder))
+
+for img_file in os.listdir(image_folder):
+    img_path = os.path.join(image_folder, img_file)
+    results = model.predict(source=img_path, save=True)
+    output_image = results[0].plot(save=False)
+    display(Image.fromarray(output_image))
