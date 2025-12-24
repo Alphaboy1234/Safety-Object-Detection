@@ -33,6 +33,6 @@ Multi-Class Detection
 Identifies oxygen tanks, fire extinguishers, toolboxes, and other critical equipment
 
 Google Technologies used in the solution:
-Co-Lab
-Google Drive
-Google Cloud Services
+Co-Lab;
+Google Drive;
+Google Cloud Services.
