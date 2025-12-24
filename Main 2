@@ -1,0 +1,99 @@
+from ultralytics import YOLO
+from IPython.display import display
+from PIL import Image
+import os
+
+model = YOLO("yolov10n.pt")
+
+image_folder = "/content/drive/MyDrive/images"
+
+for img_file in os.listdir(image_folder):
+    img_path = os.path.join(image_folder, img_file)
+    results = model.predict(source=img_path, save=False)
+    
+    output_image = results[0].plot(save=False)
+    display(Image.fromarray(output_image))
+    
+    detected_classes = results[0].boxes.cls.tolist()
+    class_names = model.names
+
+    print("Detected objects:")
+    for cls in detected_classes:
+        print("-", class_names[int(cls)])
+    
+    labels = [class_names[int(c)] for c in detected_classes]
+
+# ASTRONAUT PRESENCE
+if "person" in labels:
+    print("🧑 Astronaut detected inside space station")
+
+# HELMET SAFETY
+if "helmet" not in labels and "person" in labels:
+    print("⚠️ WARNING: Astronaut without helmet!")
+
+# TOOL SAFETY
+if "knife" in labels or "scissors" in labels:
+    print("⚠️ ALERT: Sharp tool detected — secure immediately")
+
+# FIRE HAZARD
+if "fire" in labels:
+    print("🔥 EMERGENCY: Fire detected inside space station!")
+
+# ELECTRICAL SAFETY
+if "wire" in labels and "person" in labels:
+    print("⚡ CAUTION: Astronaut near exposed wiring")
+
+# OXYGEN / LIFE SUPPORT (simulated objects)
+if "tank" not in labels:
+    print("⚠️ WARNING: Oxygen tank not visible")
+
+# SPACE STATION STRUCTURE
+if "tv" in labels:
+    print("📺 Control panel detected")
+
+# FALL / FLOATING RISK
+if "person" in labels and "chair" not in labels:
+    print("🛰️ NOTE: Astronaut floating or unsecured")
+
+# AIRLOCK SAFETY
+if "door" in labels and "person" in labels:
+    print("🚪 CAUTION: Astronaut near airlock — check pressure seals")
+
+# RADIATION SHIELDING
+if "window" in labels and "sun" in labels:
+    print("☢️ ALERT: Direct sunlight exposure — verify radiation shielding")
+
+# FOOD SUPPLY
+if "food" not in labels and "person" in labels:
+    print("🥫 WARNING: No visible food supply — check storage")
+
+# WATER SUPPLY
+if "bottle" not in labels and "person" in labels:
+    print("💧 ALERT: Drinking water not visible — confirm hydration systems")
+
+# WASTE MANAGEMENT
+if "trash" in labels and "person" in labels:
+    print("🗑️ NOTE: Waste detected — secure disposal required")
+
+# ROBOTIC ARM ACTIVITY
+if "robot" in labels and "person" in labels:
+    print("🤖 CAUTION: Astronaut near robotic arm — ensure safe distance")
+
+# COMMUNICATION SYSTEMS
+if "antenna" in labels:
+    print("📡 Communication system detected — verify signal integrity")
+
+# MEDICAL KIT AVAILABILITY
+if "first_aid" not in labels and "person" in labels:
+    print("🩺 WARNING: Medical kit not visible — check emergency readiness")
+
+# HATCH STATUS
+if "hatch" in labels and "open" in labels:
+    print("🔓 ALERT: Hatch open — confirm secure closure")
+
+# COOLANT / TEMPERATURE CONTROL
+if "pipe" in labels and "steam" in labels:
+    print("🌡️ EMERGENCY: Coolant leak detected — check thermal systems")
+
+
+print("-----")
